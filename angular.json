@@ -3,5 +3,140 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ngx-crontab-builder": {
+      "projectType": "library",
+      "root": "projects/ngx-crontab-builder",
+      "sourceRoot": "projects/ngx-crontab-builder/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-crontab-builder/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-crontab-builder/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-crontab-builder/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-crontab-builder/src/test.ts",
+            "tsConfig": "projects/ngx-crontab-builder/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-crontab-builder/karma.conf.js"
+          }
+        }
+      }
+    },
+    "crontab-builder-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/crontab-builder-demo",
+      "sourceRoot": "projects/crontab-builder-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/crontab-builder-demo",
+            "index": "projects/crontab-builder-demo/src/index.html",
+            "main": "projects/crontab-builder-demo/src/main.ts",
+            "polyfills": "projects/crontab-builder-demo/src/polyfills.ts",
+            "tsConfig": "projects/crontab-builder-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/crontab-builder-demo/src/favicon.ico",
+              "projects/crontab-builder-demo/src/assets"
+            ],
+            "styles": [
+              "projects/crontab-builder-demo/src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/crontab-builder-demo/src/environments/environment.ts",
+                  "with": "projects/crontab-builder-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "crontab-builder-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "crontab-builder-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "crontab-builder-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/crontab-builder-demo/src/test.ts",
+            "polyfills": "projects/crontab-builder-demo/src/polyfills.ts",
+            "tsConfig": "projects/crontab-builder-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/crontab-builder-demo/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/crontab-builder-demo/src/favicon.ico",
+              "projects/crontab-builder-demo/src/assets"
+            ],
+            "styles": [
+              "projects/crontab-builder-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }

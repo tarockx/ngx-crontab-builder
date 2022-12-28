@@ -1,0 +1,15 @@
+export interface LocaleInterface {
+  "header_every_x_seconds": string,
+  "header_every_x_minutes": string,
+  "header_every_x_hours": string,
+  "header_every_day": string,
+  "header_every_week": string,
+  "header_every_nth_day": string,
+  "header_every_month": string,
+  "header_every_last_day_of_month": string,
+  "header_custom_cron": string,
+  "run_every": string,
+  "seconds": string,
+  "minutes": string,
+  "hours": string,
+}
