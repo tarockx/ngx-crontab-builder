@@ -48,7 +48,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "demo",
+            "outputPath": "docs",
             "index": "projects/crontab-builder-demo/src/index.html",
             "main": "projects/crontab-builder-demo/src/main.ts",
             "polyfills": "projects/crontab-builder-demo/src/polyfills.ts",

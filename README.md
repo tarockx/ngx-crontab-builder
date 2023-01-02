@@ -2,12 +2,12 @@
 
 **NgxCrontabBuilder** is an Angular/PrimeNG control that allows users to visually edit a CRONTAB string in the Qaurtz format.
 
-![preview of the component displayed in the fieldset style](./docs/preview-fieldsets.png)
+![preview of the component displayed in the fieldset style](./assets/preview-fieldsets.png)
 
 This project is an Angular port of my original [CrontabBuilder for WPF](https://github.com/tarockx/CrontabBuilder).
 
 ## Live demo
-A live demo is available [here](./demo/index.html)
+A live demo is available [here](./docs/index.html)
 
 ## Prerequisites
 This component was developed using [PrimeNG](https://github.com/primefaces/primeng). Your project needs to include the `primeng`, `primeicons` and `primeflex` packages for the component to work properly.
