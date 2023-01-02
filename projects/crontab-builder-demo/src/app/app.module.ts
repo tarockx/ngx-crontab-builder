@@ -10,6 +10,8 @@ import {DropdownModule} from "primeng/dropdown";
 import {PaginatorModule} from "primeng/paginator";
 import {PanelModule} from "primeng/panel";
 import {CheckboxModule} from "primeng/checkbox";
+import {ReactiveFormsModule} from "@angular/forms";
+import {TabViewModule} from "primeng/tabview";
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import {CheckboxModule} from "primeng/checkbox";
     DropdownModule,
     PanelModule,
     CheckboxModule,
-    NgxCrontabBuilderModule,
-    PaginatorModule
+    PaginatorModule,
+    ReactiveFormsModule,
+    TabViewModule,
+    NgxCrontabBuilderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

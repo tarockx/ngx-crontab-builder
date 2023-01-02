@@ -14,6 +14,8 @@ export class CrontabModel {
   saturday: boolean;
   friday: boolean;
   sunday: boolean;
+  monthlyWeekdayMode: boolean;
+  lastWeekDayOfMonthMode: boolean;
 
   monthlyModeTime: string;
   monthlyModeDay: string;

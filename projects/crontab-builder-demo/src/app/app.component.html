@@ -1,37 +1,79 @@
 <div class="w-full h-full flex flex-column gap-2">
+  <div class="text-center">
+    <h1>ngx-crontab-builder demo page</h1>
+  </div>
   <p-panel header="Options">
     <div class="flex flex-column gap-2">
       <div>
-        <div class="field">
-          <label class="block">Locale</label>
-          <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="label" optionValue="value"></p-dropdown>
+        <div class="flex flex-row gap-3">
+          <div class="field">
+            <label class="block font-bold">Locale</label>
+            <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="label" optionValue="value"></p-dropdown>
+          </div>
+
+          <div class="field">
+            <label class="block font-bold">Style</label>
+            <p-dropdown [options]="componentStyles" [(ngModel)]="selectedStyle" optionLabel="label" optionValue="value"></p-dropdown>
+          </div>
         </div>
 
         <div class="field">
-          <label class="block">Modes to show</label>
+          <label class="block font-bold">Modes to show</label>
           <div class="flex flex-row gap-2">
             <p-checkbox [(ngModel)]="showSecondsMode" [binary]="true" label="Every X seconds"></p-checkbox>
             <p-checkbox [(ngModel)]="showMinutesMode" [binary]="true" label="Every X minutes"></p-checkbox>
             <p-checkbox [(ngModel)]="showHoursMode" [binary]="true" label="Every X hours"></p-checkbox>
+            <p-checkbox [(ngModel)]="showDailyMode" [binary]="true" label="Every Day"></p-checkbox>
+            <p-checkbox [(ngModel)]="showWeekMode" [binary]="true" label="Every Week"></p-checkbox>
+            <p-checkbox [(ngModel)]="showNthDayOfWeekMode" [binary]="true" label="Every Nth day of the week"></p-checkbox>
+            <p-checkbox [(ngModel)]="showMonthMode" [binary]="true" label="Every month"></p-checkbox>
+            <p-checkbox [(ngModel)]="showLastDayOfMonthMode" [binary]="true" label="Last day of month"></p-checkbox>
+            <p-checkbox [(ngModel)]="showCustomExpressionMode" [binary]="true" label="Custom"></p-checkbox>
           </div>
         </div>
-      </div>
-
-      <div>
-        <strong>CURRENT CRONTAB: </strong> {{this.currentCrontab}}
       </div>
     </div>
   </p-panel>
 
   <p-panel header="Demo">
-    <div>
-      <ngx-crontab-builder [locale]="selectedLanguage"
-                           [crontab]="currentCrontab"
-                           [showSecondsMode]="showSecondsMode"
-                           [showMinutesMode]="showMinutesMode"
-                           [showHoursMode]="showHoursMode"
-                           (crontabChange)="crontabUpdated($event)">
-      </ngx-crontab-builder>
+    <div class="flex flex-column gap-3">
+      <div class="text-center text-lg">
+        <strong>CURRENT CRONTAB: </strong> <code>{{this.currentCrontab}}</code>
+      </div>
+
+      <p-tabView (activeIndexChange)="modeChanged($event)">
+        <p-tabPanel header="CLASSIC DATA BINDING USAGE">
+          <ngx-crontab-builder [(ngModel)]="crontabProperty" (ngModelChange)="crontabUpdated($event)"
+                               [locale]="selectedLanguage"
+                               [componentStyle]="selectedStyle"
+                               [showSecondsMode]="showSecondsMode"
+                               [showMinutesMode]="showMinutesMode"
+                               [showHoursMode]="showHoursMode"
+                               [showDailyMode]="showDailyMode"
+                               [showWeekMode]="showWeekMode"
+                               [showNthDayOfWeekMode]="showNthDayOfWeekMode"
+                               [showMonthMode]="showMonthMode"
+                               [showLastDayOfMonthMode]="showLastDayOfMonthMode"
+                               [showCustomExpressionMode]="showCustomExpressionMode">
+          </ngx-crontab-builder>
+        </p-tabPanel>
+
+        <p-tabPanel header="REACTIVE FORMS USAGE">
+          <ngx-crontab-builder [formControl]="crontabFormControl"
+                               [locale]="selectedLanguage"
+                               [componentStyle]="selectedStyle"
+                               [showSecondsMode]="showSecondsMode"
+                               [showMinutesMode]="showMinutesMode"
+                               [showHoursMode]="showHoursMode"
+                               [showDailyMode]="showDailyMode"
+                               [showWeekMode]="showWeekMode"
+                               [showNthDayOfWeekMode]="showNthDayOfWeekMode"
+                               [showMonthMode]="showMonthMode"
+                               [showLastDayOfMonthMode]="showLastDayOfMonthMode"
+                               [showCustomExpressionMode]="showCustomExpressionMode">
+          </ngx-crontab-builder>
+        </p-tabPanel>
+      </p-tabView>
     </div>
   </p-panel>
 </div>
