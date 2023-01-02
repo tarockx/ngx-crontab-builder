@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   //ngx-crontab-builder configuration
   selectedLanguage: string = 'en';
-  selectedStyle = ComponentStyle.TABBED;
+  selectedStyle = ComponentStyle.FIELDSETS;
   showSecondsMode: boolean = true;
   showMinutesMode: boolean = true;
   showHoursMode: boolean = true;
