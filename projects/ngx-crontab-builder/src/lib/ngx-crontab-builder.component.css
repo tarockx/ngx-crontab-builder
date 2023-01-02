@@ -1,0 +1,16 @@
+.ngx-crontab-builder-root .p-fieldset-legend {
+  padding: 0.5rem !important;
+}
+
+.ngx-crontab-builder-root .p-fieldset-content {
+  padding: 0.2rem !important;
+}
+
+.ngx-crontab-builder-root .p-divider.p-divider-horizontal {
+  margin: 0.5rem 0 !important;
+}
+
+.ngx-crontab-builder-root .disabled {
+  opacity: 0.6 !important;
+  cursor: default !important;
+}
