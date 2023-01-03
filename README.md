@@ -9,6 +9,14 @@ This project is an Angular port of my original [CrontabBuilder for WPF](https://
 ## Live demo
 A live demo is available [here](https://tarockx.github.io/ngx-crontab-builder/)
 
+## Changelog
+### v1.0.1
+- Added changelog
+- Updated readme and reorganized some file locations
+
+### Older changes
+- See [changelog](./CHANGELOG.md)
+
 ## Prerequisites
 This component was developed using [PrimeNG](https://github.com/primefaces/primeng). Your project needs to include the `primeng`, `primeicons` and `primeflex` packages for the component to work properly.
 
