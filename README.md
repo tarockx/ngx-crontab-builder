@@ -15,7 +15,8 @@ This component was developed using [PrimeNG](https://github.com/primefaces/prime
 The library has been tested with `Angular 14.x.x` / `PrimeNG 14.x.x` which are listed as peer dependencies. It might work with older versions of Angular/PrimeNG, but this has not been tested.
 
 ## Installation
-The package will (hopefully) be available on NPM soon.
+The package is available on the NPM registry. Install it with:
+>npm install ngx-crontab-builder
 
 ## Usage
 To use the control, first import the `NgxCrontabBuilderModule` module in your Angular app:
