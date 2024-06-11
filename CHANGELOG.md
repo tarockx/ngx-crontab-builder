@@ -1,3 +1,6 @@
+### v15.0.2
+- Republished because of npm package problems
+
 ### v15.0.1
 - Fixed package contents (15.0.0 contains incorrect file)
 
