@@ -301,7 +301,7 @@
     <div class="flex flex-row align-items-center gap-2">
       <div>{{tr.locale.run_every_month_on_day}}</div>
       <input pInputText [(ngModel)]="model.monthlyModeDay" (ngModelChange)="recalculateCrontab()"
-             [pKeyFilter]="constants.regex1to31" [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
+              [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
       <div>(1-31) {{tr.locale.of_the_week_at}}</div>
       <input pInputText [(ngModel)]="model.monthlyModeTime" (ngModelChange)="recalculateCrontab()"
              [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_MONTH">

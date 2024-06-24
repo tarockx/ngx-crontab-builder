@@ -1,3 +1,6 @@
+### v16.0.0
+- Upgraded to work with Angular 16 / PrimeNG 16
+- 
 ### v15.0.2
 - Republished because of npm package problems
 

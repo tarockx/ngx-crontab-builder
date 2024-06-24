@@ -10,8 +10,8 @@ This project is an Angular port of my original [CrontabBuilder for WPF](https://
 A live demo is available [here](https://tarockx.github.io/ngx-crontab-builder/)
 
 ## Changelog
-### v15.0.2
-- Republished because of npm package problems
+### v16.0.0
+- Upgraded to work with Angular 16 / PrimeNG 16
 
 ### Older changes
 - See [changelog](./CHANGELOG.md)
@@ -19,7 +19,7 @@ A live demo is available [here](https://tarockx.github.io/ngx-crontab-builder/)
 ## Prerequisites
 This component was developed using [PrimeNG](https://github.com/primefaces/primeng). Your project needs to include the `primeng`, `primeicons` and `primeflex` packages for the component to work properly.
 
-The library has been tested with `Angular 14.x.x` / `PrimeNG 14.x.x` which are listed as peer dependencies. It might work with older versions of Angular/PrimeNG, but this has not been tested.
+The version number of the library matches the required version of `Angular` / `PrimeNG`, so install the appropriate version (for example: if using `Angular 16`, install ngx-crontab-builder `^16.0.0`).
 
 ## Installation
 The package is available on the NPM registry. Install it with:
