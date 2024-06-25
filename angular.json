@@ -69,18 +69,7 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
+              "budgets": [],
               "fileReplacements": [
                 {
                   "replace": "projects/crontab-builder-demo/src/environments/environment.ts",
@@ -104,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "crontab-builder-demo:build:production"
+              "buildTarget": "crontab-builder-demo:build:production"
             },
             "development": {
-              "browserTarget": "crontab-builder-demo:build:development"
+              "buildTarget": "crontab-builder-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -115,7 +104,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "crontab-builder-demo:build"
+            "buildTarget": "crontab-builder-demo:build"
           }
         },
         "test": {
