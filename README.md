@@ -10,8 +10,8 @@ This project is an Angular port of my original [CrontabBuilder for WPF](https://
 A live demo is available [here](https://tarockx.github.io/ngx-crontab-builder/)
 
 ## Changelog
-### v19.0.0
-- Upgraded to work with Angular 19 / PrimeNG 19
+### v20.0.0
+- Upgraded to work with Angular 20 / PrimeNG 20
 
 ### Older changes
 - See [changelog](./CHANGELOG.md)

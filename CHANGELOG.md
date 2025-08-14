@@ -1,3 +1,6 @@
+### v20.0.0
+- Upgraded to work with Angular 20 / PrimeNG 20
+
 ### v19.0.0
 - Upgraded to work with Angular 19 / PrimeNG 19
 - 
