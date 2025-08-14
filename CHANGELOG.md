@@ -1,3 +1,10 @@
+### v19.0.0
+- Upgraded to work with Angular 19 / PrimeNG 19
+- 
+### v18.0.0
+- Upgraded to work with Angular 18 / PrimeNG 18
+- Migrated to standalone component architecture, remove NgModule from library  
+ 
 ### v17.0.0
 - Upgraded to work with Angular 17 / PrimeNG 17
 
