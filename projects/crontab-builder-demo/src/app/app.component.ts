@@ -1,11 +1,29 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ComponentStyle} from "ngx-crontab-builder";
-import {FormControl} from "@angular/forms";
+import {NgxCrontabBuilderComponent, ComponentStyle} from "ngx-crontab-builder";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Subscription} from "rxjs";
+import {Panel} from "primeng/panel";
+import {Checkbox} from "primeng/checkbox";
+import {Select} from "primeng/select";
+import {TabPanels, TabPanel, Tab, Tabs, TabList} from "primeng/tabs";
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
+  imports: [
+    NgxCrontabBuilderComponent,
+    Panel,
+    FormsModule,
+    Checkbox,
+    ReactiveFormsModule,
+    Select,
+    Tab,
+    Tabs,
+    TabPanel,
+    TabPanels,
+    TabList
+  ],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -21,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
     {value: ComponentStyle.FIELDSETS, label: 'Field sets'},
     {value: ComponentStyle.TABBED, label: 'Tabbed interface'},
   ];
-  currentCrontab: string;
+  currentCrontab!: string|null;
 
   //ngModel data binding backing property
   crontabProperty: string = '0/42 * * 1/1 * ?';
@@ -43,7 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
   showCustomExpressionMode: boolean = true;
 
   //private
-  private formSubscription: Subscription;
+  private formSubscription!: Subscription;
 
   constructor() {
   }
@@ -53,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.currentCrontab = crontab;
   }
 
-  modeChanged(activeIndex: number) {
+  modeChanged(activeIndex: unknown) {
     this.currentCrontab = activeIndex === 0 ? this.crontabProperty : this.crontabFormControl.getRawValue();
   }
 

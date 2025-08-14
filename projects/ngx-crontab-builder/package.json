@@ -1,17 +1,10 @@
 {
   "name": "ngx-crontab-builder",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "primeng": "^17.0.0",
-    "primeflex": "^3.0.0",
-    "primeicons": "^6.0.0"
-  },
-  "devDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "primeng": "^17.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "primeng": "^18.0.0",
     "primeflex": "^3.0.0",
     "primeicons": "^6.0.0"
   }

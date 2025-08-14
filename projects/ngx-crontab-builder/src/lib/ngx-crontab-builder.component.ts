@@ -12,13 +12,42 @@ import {CrontabModel} from "./models/crontab-model";
 import {CrontabService} from "./services/crontab.service";
 import {constants} from './models/constants';
 import {ComponentStyle} from "./models/component-style";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Fieldset} from "primeng/fieldset";
+import {RadioButton} from "primeng/radiobutton";
+import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
+import {PrimeTemplate} from "primeng/api";
+import {Divider} from "primeng/divider";
+import {InputText} from "primeng/inputtext";
+import {Checkbox} from "primeng/checkbox";
+import {Select} from "primeng/select";
+import {TabPanels, TabPanel, Tab, Tabs, TabList} from "primeng/tabs";
+
 
 @Component({
+  standalone: true,
   selector: 'ngx-crontab-builder',
   templateUrl: './ngx-crontab-builder.component.html',
   styleUrls: ['./ngx-crontab-builder.component.css'],
   encapsulation: ViewEncapsulation.None,
+  imports: [
+    Fieldset,
+    RadioButton,
+    FormsModule,
+    NgTemplateOutlet,
+    NgIf,
+    PrimeTemplate,
+    Divider,
+    InputText,
+    NgClass,
+    Checkbox,
+    Select,
+    Tabs,
+    Tab,
+    TabPanel,
+    TabPanels,
+    TabList
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -50,9 +79,9 @@ export class NgxCrontabBuilderComponent implements OnInit, OnChanges, ControlVal
 
   //UI
   crontabModeKeys: CrontabMode[] = [];
-  activeTabIndex: number = 0;
-  disabled: boolean;
-  private  touched: boolean;
+  activeTabIndex: number|null = 0;
+  disabled!: boolean;
+  private  touched!: boolean;
   private onTouched: any;
   private onChange: any;
 
@@ -122,8 +151,8 @@ export class NgxCrontabBuilderComponent implements OnInit, OnChanges, ControlVal
     }
   }
 
-  tabChanged(idx: number){
-    this.model.mode = this.crontabModeKeys[idx];
+  tabChanged(idx: unknown){
+    this.model.mode = this.crontabModeKeys[idx as number];
     this.recalculateCrontab();
   }
 

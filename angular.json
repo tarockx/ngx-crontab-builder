@@ -46,12 +46,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs",
+            "outputPath": {
+              "base": "docs",
+              "browser": ""
+            },
             "index": "projects/crontab-builder-demo/src/index.html",
-            "main": "projects/crontab-builder-demo/src/main.ts",
-            "polyfills": "projects/crontab-builder-demo/src/polyfills.ts",
+            "polyfills": [
+              "projects/crontab-builder-demo/src/polyfills.ts"
+            ],
             "tsConfig": "projects/crontab-builder-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -60,12 +64,10 @@
             ],
             "styles": [
               "projects/crontab-builder-demo/src/styles.scss",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeflex/primeflex.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/primeflex/primeflex.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/crontab-builder-demo/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -79,9 +81,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
