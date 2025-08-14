@@ -1,279 +1,323 @@
 <!-- FIELDSETS display mode -->
-<div *ngIf="componentStyle === 'FIELDSETS'" class="ngx-crontab-builder-root root-fieldset flex flex-column gap-2">
-  <p-fieldset *ngIf="showSecondsMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.EVERY_X_SECONDS" name="crontabmode">
-                      </p-radioButton>
-        <label>{{ tr.locale.header_every_x_seconds }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyXSeconds"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showMinutesMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.EVERY_X_MINUTES" name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_x_minutes }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyXMinutes"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showHoursMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.EVERY_X_HOURS" name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_x_hours }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyXHours"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showDailyMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()" [value]="CrontabMode.EVERY_DAY"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_day }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyDay"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showWeekMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.EVERY_WEEK"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_week }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyWeek"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showNthDayOfWeekMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.NTH_WEEKDAY"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_nth_day }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyNthDayOfWeek"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showMonthMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.EVERY_MONTH"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_month }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="everyMonth"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showLastDayOfMonthMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.LAST_DAY_OF_MONTH"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_every_last_day_of_month }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="lastDayOfMonth"></ng-template>
-  </p-fieldset>
-
-  <p-fieldset *ngIf="showCustomExpressionMode">
-    <ng-template pTemplate="header">
-      <div class="flex items-center gap-2">
-        <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
-                       [value]="CrontabMode.CUSTOM"
-                       name="crontabmode">
-        </p-radioButton>
-        <label>{{ tr.locale.header_custom_cron }}</label>
-      </div>
-    </ng-template>
-
-    <ng-template [ngTemplateOutlet]="customCrontab"></ng-template>
-  </p-fieldset>
-</div>
+@if (componentStyle === 'FIELDSETS') {
+  <div class="ngx-crontab-builder-root root-fieldset flex flex-column gap-2">
+    @if (showSecondsMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.EVERY_X_SECONDS" name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_x_seconds }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyXSeconds"></ng-template>
+      </p-fieldset>
+    }
+    @if (showMinutesMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.EVERY_X_MINUTES" name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_x_minutes }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyXMinutes"></ng-template>
+      </p-fieldset>
+    }
+    @if (showHoursMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.EVERY_X_HOURS" name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_x_hours }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyXHours"></ng-template>
+      </p-fieldset>
+    }
+    @if (showDailyMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()" [value]="CrontabMode.EVERY_DAY"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_day }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyDay"></ng-template>
+      </p-fieldset>
+    }
+    @if (showWeekMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.EVERY_WEEK"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_week }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyWeek"></ng-template>
+      </p-fieldset>
+    }
+    @if (showNthDayOfWeekMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.NTH_WEEKDAY"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_nth_day }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyNthDayOfWeek"></ng-template>
+      </p-fieldset>
+    }
+    @if (showMonthMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.EVERY_MONTH"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_month }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="everyMonth"></ng-template>
+      </p-fieldset>
+    }
+    @if (showLastDayOfMonthMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.LAST_DAY_OF_MONTH"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_every_last_day_of_month }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="lastDayOfMonth"></ng-template>
+      </p-fieldset>
+    }
+    @if (showCustomExpressionMode) {
+      <p-fieldset>
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <p-radioButton [(ngModel)]="model.mode" (onClick)="recalculateCrontab()"
+              [value]="CrontabMode.CUSTOM"
+              name="crontabmode">
+            </p-radioButton>
+            <label>{{ tr.locale.header_custom_cron }}</label>
+          </div>
+        </ng-template>
+        <ng-template [ngTemplateOutlet]="customCrontab"></ng-template>
+      </p-fieldset>
+    }
+  </div>
+}
 
 <!-- PLAIN display mode -->
-<div *ngIf="componentStyle === 'PLAIN'" class="ngx-crontab-builder-root root-plain flex flex-column gap-2">
-  <p-divider align="left" *ngIf="showSecondsMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.EVERY_X_SECONDS" name="crontabmode">
-      </p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_x_seconds }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyXSeconds" *ngIf="showSecondsMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showMinutesMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.EVERY_X_MINUTES" name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_x_minutes }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyXMinutes" *ngIf="showMinutesMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showHoursMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.EVERY_X_HOURS" name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_x_hours }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyXHours" *ngIf="showHoursMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showDailyMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()" [value]="CrontabMode.EVERY_DAY"
-                   name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_day }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyDay" *ngIf="showDailyMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showWeekMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.EVERY_WEEK"
-                     name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_week }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyWeek" *ngIf="showWeekMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showNthDayOfWeekMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.NTH_WEEKDAY"
-                     name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_nth_day }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyNthDayOfWeek" *ngIf="showNthDayOfWeekMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showMonthMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.EVERY_MONTH"
-                     name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_month }}</label>
-    </div>
-
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="everyMonth" *ngIf="showMonthMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showLastDayOfMonthMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.LAST_DAY_OF_MONTH"
-                     name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_every_last_day_of_month }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="lastDayOfMonth" *ngIf="showLastDayOfMonthMode"></ng-template>
-
-  <p-divider align="left" *ngIf="showCustomExpressionMode">
-    <div class="flex items-center gap-2">
-      <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
-                     [value]="CrontabMode.CUSTOM"
-                     name="crontabmode"></p-radioButton>
-      <label class="font-bold">{{ tr.locale.header_custom_cron }}</label>
-    </div>
-  </p-divider>
-  <ng-template [ngTemplateOutlet]="customCrontab" *ngIf="showCustomExpressionMode"></ng-template>
-</div>
+@if (componentStyle === 'PLAIN') {
+  <div class="ngx-crontab-builder-root root-plain flex flex-column gap-2">
+    @if (showSecondsMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.EVERY_X_SECONDS" name="crontabmode">
+          </p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_x_seconds }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showSecondsMode) {
+      <ng-template [ngTemplateOutlet]="everyXSeconds"></ng-template>
+    }
+    @if (showMinutesMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+          [value]="CrontabMode.EVERY_X_MINUTES" name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_x_minutes }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showMinutesMode) {
+      <ng-template [ngTemplateOutlet]="everyXMinutes"></ng-template>
+    }
+    @if (showHoursMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+          [value]="CrontabMode.EVERY_X_HOURS" name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_x_hours }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showHoursMode) {
+      <ng-template [ngTemplateOutlet]="everyXHours"></ng-template>
+    }
+    @if (showDailyMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()" [value]="CrontabMode.EVERY_DAY"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_day }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showDailyMode) {
+      <ng-template [ngTemplateOutlet]="everyDay"></ng-template>
+    }
+    @if (showWeekMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.EVERY_WEEK"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_week }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showWeekMode) {
+      <ng-template [ngTemplateOutlet]="everyWeek"></ng-template>
+    }
+    @if (showNthDayOfWeekMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.NTH_WEEKDAY"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_nth_day }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showNthDayOfWeekMode) {
+      <ng-template [ngTemplateOutlet]="everyNthDayOfWeek"></ng-template>
+    }
+    @if (showMonthMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.EVERY_MONTH"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_month }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showMonthMode) {
+      <ng-template [ngTemplateOutlet]="everyMonth"></ng-template>
+    }
+    @if (showLastDayOfMonthMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.LAST_DAY_OF_MONTH"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_every_last_day_of_month }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showLastDayOfMonthMode) {
+      <ng-template [ngTemplateOutlet]="lastDayOfMonth"></ng-template>
+    }
+    @if (showCustomExpressionMode) {
+      <p-divider align="left">
+        <div class="flex items-center gap-2">
+          <p-radioButton [(ngModel)]="model.mode" (ngModelChange)="recalculateCrontab()"
+            [value]="CrontabMode.CUSTOM"
+          name="crontabmode"></p-radioButton>
+          <label class="font-bold">{{ tr.locale.header_custom_cron }}</label>
+        </div>
+      </p-divider>
+    }
+    @if (showCustomExpressionMode) {
+      <ng-template [ngTemplateOutlet]="customCrontab"></ng-template>
+    }
+  </div>
+}
 
 <!-- TABBED display mode -->
-<div *ngIf="componentStyle === 'TABBED'" class="ngx-crontab-builder-root root-fieldset flex flex-column gap-2">
-  <p-tabs [scrollable]="true" [value]="activeTabIndex" (valueChange)="tabChanged($event)">
-    <p-tablist>
-      <p-tab [value]="0">{{tr.locale.header_every_x_seconds}}</p-tab>
-      <p-tab [value]="1">{{tr.locale.header_every_x_minutes}}</p-tab>
-      <p-tab [value]="2">{{tr.locale.header_every_x_hours}}</p-tab>
-      <p-tab [value]="3">{{tr.locale.header_every_day}}</p-tab>
-      <p-tab [value]="4">{{tr.locale.header_every_week}}</p-tab>
-      <p-tab [value]="5">{{tr.locale.header_every_nth_day}}</p-tab>
-      <p-tab [value]="6">{{tr.locale.header_every_month}}</p-tab>
-      <p-tab [value]="7">{{tr.locale.header_every_last_day_of_month}}</p-tab>
-      <p-tab [value]="8">{{tr.locale.header_custom_cron}}</p-tab>
-    </p-tablist>
-    <p-tabpanels>
-      <p-tabpanel [value]="0" *ngIf="showSecondsMode">
-        <ng-template [ngTemplateOutlet]="everyXSeconds"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="1" *ngIf="showMinutesMode">
-        <ng-template [ngTemplateOutlet]="everyXMinutes"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="2" *ngIf="showHoursMode">
-        <ng-template [ngTemplateOutlet]="everyXHours"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="3" *ngIf="showDailyMode">
-        <ng-template [ngTemplateOutlet]="everyDay"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="4" *ngIf="showWeekMode">
-        <ng-template [ngTemplateOutlet]="everyWeek"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="5" *ngIf="showNthDayOfWeekMode">
-        <ng-template [ngTemplateOutlet]="everyNthDayOfWeek"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="6" *ngIf="showMonthMode">
-        <ng-template [ngTemplateOutlet]="everyMonth"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="7" *ngIf="showLastDayOfMonthMode">
-        <ng-template [ngTemplateOutlet]="lastDayOfMonth"></ng-template>
-      </p-tabpanel>
-
-      <p-tabpanel [value]="8" *ngIf="showCustomExpressionMode">
-        <ng-template [ngTemplateOutlet]="customCrontab"></ng-template>
-      </p-tabpanel>
-    </p-tabpanels>
-  </p-tabs>
-</div>
+@if (componentStyle === 'TABBED') {
+  <div class="ngx-crontab-builder-root root-fieldset flex flex-column gap-2">
+    <p-tabs [scrollable]="true" [value]="activeTabIndex" (valueChange)="tabChanged($event)">
+      <p-tablist>
+        <p-tab [value]="0">{{tr.locale.header_every_x_seconds}}</p-tab>
+        <p-tab [value]="1">{{tr.locale.header_every_x_minutes}}</p-tab>
+        <p-tab [value]="2">{{tr.locale.header_every_x_hours}}</p-tab>
+        <p-tab [value]="3">{{tr.locale.header_every_day}}</p-tab>
+        <p-tab [value]="4">{{tr.locale.header_every_week}}</p-tab>
+        <p-tab [value]="5">{{tr.locale.header_every_nth_day}}</p-tab>
+        <p-tab [value]="6">{{tr.locale.header_every_month}}</p-tab>
+        <p-tab [value]="7">{{tr.locale.header_every_last_day_of_month}}</p-tab>
+        <p-tab [value]="8">{{tr.locale.header_custom_cron}}</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        @if (showSecondsMode) {
+          <p-tabpanel [value]="0">
+            <ng-template [ngTemplateOutlet]="everyXSeconds"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showMinutesMode) {
+          <p-tabpanel [value]="1">
+            <ng-template [ngTemplateOutlet]="everyXMinutes"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showHoursMode) {
+          <p-tabpanel [value]="2">
+            <ng-template [ngTemplateOutlet]="everyXHours"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showDailyMode) {
+          <p-tabpanel [value]="3">
+            <ng-template [ngTemplateOutlet]="everyDay"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showWeekMode) {
+          <p-tabpanel [value]="4">
+            <ng-template [ngTemplateOutlet]="everyWeek"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showNthDayOfWeekMode) {
+          <p-tabpanel [value]="5">
+            <ng-template [ngTemplateOutlet]="everyNthDayOfWeek"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showMonthMode) {
+          <p-tabpanel [value]="6">
+            <ng-template [ngTemplateOutlet]="everyMonth"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showLastDayOfMonthMode) {
+          <p-tabpanel [value]="7">
+            <ng-template [ngTemplateOutlet]="lastDayOfMonth"></ng-template>
+          </p-tabpanel>
+        }
+        @if (showCustomExpressionMode) {
+          <p-tabpanel [value]="8">
+            <ng-template [ngTemplateOutlet]="customCrontab"></ng-template>
+          </p-tabpanel>
+        }
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+}
 
 <!-- Actual editor components -->
 <ng-template #everyXSeconds>
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.EVERY_X_SECONDS}">
     <div class="disable-check">{{tr.locale.run_every}}</div>
     <input pInputText [(ngModel)]="model.secondModeSeconds" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.regex1to59" [disabled]="model.mode !== CrontabMode.EVERY_X_SECONDS">
+      [pattern]="constants.regex1to59" [disabled]="model.mode !== CrontabMode.EVERY_X_SECONDS">
     <div class="disable-check">{{tr.locale.seconds}}</div>
   </div>
 </ng-template>
@@ -282,7 +326,7 @@
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.EVERY_X_MINUTES}">
     <div>{{tr.locale.run_every}}</div>
     <input pInputText [(ngModel)]="model.minuteModeMinutes" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.regex1to59" [disabled]="model.mode !== CrontabMode.EVERY_X_MINUTES">
+      [pattern]="constants.regex1to59" [disabled]="model.mode !== CrontabMode.EVERY_X_MINUTES">
     <div>{{tr.locale.minutes}}</div>
   </div>
 </ng-template>
@@ -291,7 +335,7 @@
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.EVERY_X_HOURS}">
     <div>{{tr.locale.run_every}}</div>
     <input pInputText [(ngModel)]="model.hourlyModeHours" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.regex1to23" [disabled]="model.mode !== CrontabMode.EVERY_X_HOURS">
+      [pattern]="constants.regex1to23" [disabled]="model.mode !== CrontabMode.EVERY_X_HOURS">
     <div>{{tr.locale.hours}}</div>
   </div>
 </ng-template>
@@ -300,7 +344,7 @@
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.EVERY_DAY}">
     <div>{{tr.locale.run_every_day_at}}</div>
     <input pInputText [(ngModel)]="model.dailyModeTime" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_DAY">
+      [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_DAY">
     <div>{{tr.locale.time_format_info}}</div>
   </div>
 </ng-template>
@@ -311,50 +355,50 @@
     <div class="flex flex-row align-items-center gap-1">
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.monday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_mon }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.tuesday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_tue }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.wednesday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_wed }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.thursday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_thu }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.friday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_fri }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.saturday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_sat }}</label>
       </div>
       <div class="flex items-center">
         <p-checkbox [(ngModel)]="model.sunday" [binary]="true"
-                    (ngModelChange)="recalculateCrontab()"
-                    [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
+          (ngModelChange)="recalculateCrontab()"
+        [disabled]="model.mode !== CrontabMode.EVERY_WEEK"></p-checkbox>
         <label>{{ tr.locale.day_sun }}</label>
       </div>
     </div>
     <div>{{tr.locale.at}}</div>
     <input pInputText [(ngModel)]="model.weeklyModeTime" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_WEEK">
+      [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_WEEK">
     <div>{{tr.locale.time_format_info}}</div>
   </div>
 </ng-template>
@@ -363,17 +407,17 @@
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.NTH_WEEKDAY}">
     <div>{{tr.locale.run_every}}</div>
     <p-select [options]="tr.localizedWeekOrdinals" [(ngModel)]="model.nthDayOfWeekIndex" optionLabel="label"
-              optionValue="value" appendTo="body"
-              (ngModelChange)="recalculateCrontab()"
-              [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY">
+      optionValue="value" appendTo="body"
+      (ngModelChange)="recalculateCrontab()"
+      [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY">
     </p-select>
     <p-select [options]="tr.localizedWeekDays" [(ngModel)]="model.nthDayOfWeekWeekday" optionLabel="label"
-                optionValue="value"
-                (ngModelChange)="recalculateCrontab()"
-                [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY"></p-select>
+      optionValue="value"
+      (ngModelChange)="recalculateCrontab()"
+    [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY"></p-select>
     <div>{{tr.locale.of_the_week_at}}</div>
     <input pInputText [(ngModel)]="model.weeklyModeTime" (ngModelChange)="recalculateCrontab()"
-           [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY">
+      [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.NTH_WEEKDAY">
     <div>{{tr.locale.time_format_info}}</div>
   </div>
 </ng-template>
@@ -383,17 +427,17 @@
     <div class="flex flex-row align-items-center gap-2">
       <div>{{tr.locale.run_every_month_on_day}}</div>
       <input pInputText [(ngModel)]="model.monthlyModeDay" (ngModelChange)="recalculateCrontab()"
-              [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
+        [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
       <div>(1-31) {{tr.locale.of_the_week_at}}</div>
       <input pInputText [(ngModel)]="model.monthlyModeTime" (ngModelChange)="recalculateCrontab()"
-             [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
+        [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.EVERY_MONTH">
       <div>{{tr.locale.time_format_info}}</div>
     </div>
 
     <div class="flex items-center">
       <p-checkbox [(ngModel)]="model.monthlyWeekdayMode" [binary]="true"
-                  (ngModelChange)="recalculateCrontab()"
-                  [disabled]="model.mode !== CrontabMode.EVERY_MONTH"></p-checkbox>
+        (ngModelChange)="recalculateCrontab()"
+      [disabled]="model.mode !== CrontabMode.EVERY_MONTH"></p-checkbox>
       <label>{{ tr.locale.nearest_weekday_option }}</label>
     </div>
   </div>
@@ -405,14 +449,14 @@
       <div>{{tr.locale.run_on_last_day_of_month}}</div>
       <div>(1-31) {{tr.locale.at}}</div>
       <input pInputText [(ngModel)]="model.lastDayOfMonthModeTime" (ngModelChange)="recalculateCrontab()"
-             [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.LAST_DAY_OF_MONTH">
+        [pattern]="constants.timestampRegex" [disabled]="model.mode !== CrontabMode.LAST_DAY_OF_MONTH">
       <div>{{tr.locale.time_format_info}}</div>
     </div>
 
     <div class="flex items-center">
       <p-checkbox [(ngModel)]="model.lastWeekDayOfMonthMode" [binary]="true"
-                  (ngModelChange)="recalculateCrontab()"
-                  [disabled]="model.mode !== CrontabMode.LAST_DAY_OF_MONTH"></p-checkbox>
+        (ngModelChange)="recalculateCrontab()"
+      [disabled]="model.mode !== CrontabMode.LAST_DAY_OF_MONTH"></p-checkbox>
       <label>{{ tr.locale.last_weekday_of_month_option }}</label>
     </div>
   </div>
@@ -422,6 +466,6 @@
   <div class="flex flex-row align-items-center gap-2" [ngClass]="{'disabled': model.mode !== CrontabMode.CUSTOM}">
     <div>{{tr.locale.use_custom_crontab}}</div>
     <input pInputText [(ngModel)]="model.customCrontabString" (ngModelChange)="recalculateCrontab()"
-           [disabled]="model.mode !== CrontabMode.CUSTOM">
+      [disabled]="model.mode !== CrontabMode.CUSTOM">
   </div>
 </ng-template>

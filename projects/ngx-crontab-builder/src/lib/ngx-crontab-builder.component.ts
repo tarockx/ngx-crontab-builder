@@ -15,7 +15,7 @@ import {ComponentStyle} from "./models/component-style";
 import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Fieldset} from "primeng/fieldset";
 import {RadioButton} from "primeng/radiobutton";
-import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
+import { NgClass, NgTemplateOutlet } from "@angular/common";
 import {PrimeTemplate} from "primeng/api";
 import {Divider} from "primeng/divider";
 import {InputText} from "primeng/inputtext";
@@ -35,7 +35,6 @@ import {TabPanels, TabPanel, Tab, Tabs, TabList} from "primeng/tabs";
     RadioButton,
     FormsModule,
     NgTemplateOutlet,
-    NgIf,
     PrimeTemplate,
     Divider,
     InputText,
@@ -47,7 +46,7 @@ import {TabPanels, TabPanel, Tab, Tabs, TabList} from "primeng/tabs";
     TabPanel,
     TabPanels,
     TabList
-  ],
+],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -79,7 +78,7 @@ export class NgxCrontabBuilderComponent implements OnInit, OnChanges, ControlVal
 
   //UI
   crontabModeKeys: CrontabMode[] = [];
-  activeTabIndex: number|null = 0;
+  activeTabIndex: string|number = 0;
   disabled!: boolean;
   private  touched!: boolean;
   private onTouched: any;
